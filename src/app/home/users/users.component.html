@@ -1,0 +1,76 @@
+<div class="content">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="text-center card-box">
+          <div class="member-card pt-2 pb-2">
+            <div class="thumb-lg member-thumb mx-auto" *ngIf="user?.user?.picture">
+              <img 
+                [src]="user?.user?.picture?.large"
+                class="rounded-circle img-thumbnail"
+                alt="profile-image"
+              />
+            </div>
+            <div class="">
+              <h4>
+                {{ user?.user?.name?.title | titlecase }}
+                {{ user?.user?.name?.first | titlecase }}
+                {{ user?.user?.name?.last | titlecase }}
+              </h4>
+              <p class="text-muted">
+                {{ user?.user?.email }}<span>| </span
+                ><span
+                  ><a class="text-pink">{{ user?.user?.gender }}</a></span
+                >
+              </p>
+            </div>
+            <ul class="social-links list-inline">
+              <li class="list-inline-item">Phone: {{ user?.user?.phone }}</li>
+            </ul>
+            <button
+              type="button"
+              class="
+                btn btn-primary
+                mt-3
+                btn-rounded
+                waves-effect
+                w-md
+                waves-light
+              "
+            >
+              {{ user?.user?.username }}
+            </button>
+            <div class="mt-4">
+              <div class="row">
+                <div class="col-4">
+                  <div class="mt-3">
+                    <h4>City</h4>
+                    <p class="mb-0 text-muted">
+                      {{ user?.user?.location?.city | titlecase }}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mt-3">
+                    <h4>State</h4>
+                    <p class="mb-0 text-muted">
+                      {{ user?.user?.location?.state | titlecase }}
+                    </p>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="mt-3">
+                    <h4>Street</h4>
+                    <p class="mb-0 text-muted">
+                      {{ user?.user?.location?.street | titlecase }}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

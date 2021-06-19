@@ -1,0 +1,49 @@
+<!-- Login card -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="text-login">LOGIN</h2>
+      <div class="login-container">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="userName">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="userName"
+              formControlName="userName"
+              placeholder="userName"
+              [ngClass]="{ error: form.userName?.invalid && form.userName.dirty }"
+            />
+            <label
+              class="form-error"
+              *ngIf="form.userName?.invalid && form.userName.dirty"
+              >Enter username
+            </label>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              formControlName="password"
+              placeholder="password"
+              [ngClass]="{
+                error: form.password?.invalid && form.password.dirty
+              }"
+            />
+            <label
+              class="form-error"
+              *ngIf="form.password?.invalid && form.password.dirty"
+              >Enter valid password
+            </label>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

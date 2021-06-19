@@ -1,0 +1,18 @@
+<div class="content">
+  <div class="row">
+    <div class="col-sm-4">
+      <button class="btn btn-primary" (click)="createNew()">Add Member</button>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="row">
+    <div class="col-sm-4">
+      <input type="text" [(ngModel)]="keyParam" />
+      <button class="btn btn-primary" (click)="search()">search</button>
+    </div>
+  </div>
+</div>
+<ng-container *ngFor="let user of usersList | filter: keyParam">
+  <app-users [user]="user"></app-users>
+</ng-container>

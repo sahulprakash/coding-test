@@ -1,0 +1,202 @@
+<form [formGroup]="userForm">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <div class="form-row">
+        <label for="title" class="form-label"> Title</label>
+        <label class="mandatory">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          formControlName="title"
+          placeholder="Enter title name"
+          autocomplete="off"
+          [ngClass]="{ error: f.title?.invalid && f.title.dirty }"
+        />
+        <label
+          class="form-error"
+          *ngIf="f.title?.errors?.required && f.title.dirty"
+          >Enter title name
+        </label>
+      </div>
+    </div>
+
+    <div class="col-12 col-sm-6">
+      <div class="form-row">
+        <label class="form-label">First name</label>
+        <label class="mandatory">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="first"
+          formControlName="first"
+          placeholder="Enter first name"
+          autocomplete="off"
+          [ngClass]="{ error: f.first?.invalid && f.first.dirty }"
+        />
+        <label
+          class="form-error"
+          *ngIf="f.first?.errors?.required && f.first.dirty"
+          >Enter first name
+        </label>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="form-row">
+        <label class="form-label">Last name</label>
+        <label class="mandatory">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="last"
+          formControlName="last"
+          placeholder="Enter last name"
+          autocomplete="off"
+          [ngClass]="{ error: f.last?.invalid && f.last.dirty }"
+        />
+        <label
+          class="form-error"
+          *ngIf="f.last?.errors?.required && f.last.dirty"
+          >Enter last name
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="form-row">
+        <label class="form-label">Gender</label>
+        <label class="mandatory">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="gender"
+          formControlName="gender"
+          placeholder="Enter gender name"
+          autocomplete="off"
+          [ngClass]="{ error: f.gender?.invalid && f.gender.dirty }"
+        />
+        <label
+          class="form-error"
+          *ngIf="f.gender?.errors?.required && f.gender.dirty"
+          >Enter gender name
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="form-row">
+        <label class="form-label">Email</label>
+        <label class="mandatory">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          formControlName="email"
+          placeholder="Enter email"
+          autocomplete="off"
+          [ngClass]="{ error: f.email?.invalid && f.email.dirty }"
+        />
+        <label
+          class="form-error"
+          *ngIf="f.email?.errors?.required && f.email.dirty"
+          >Enter email
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="form-row">
+        <label class="form-label">Password</label>
+        <label class="mandatory">*</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          placeholder="Enter password"
+          autocomplete="off"
+          [ngClass]="{ error: f.password?.invalid && f.password.dirty }"
+        />
+        <label
+          class="form-error"
+          *ngIf="f.password?.errors?.required && f.password.dirty"
+          >Enter password
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="form-row">
+        <label class="form-label">User name</label>
+        <label class="mandatory">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="userName"
+          formControlName="userName"
+          placeholder="Enter user name"
+          autocomplete="off"
+          [ngClass]="{ error: f.userName?.invalid && f.userName.dirty }"
+        />
+        <label
+          class="form-error"
+          *ngIf="f.userName?.errors?.required && f.userName.dirty"
+          >Enter user name
+        </label>
+      </div>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="form-row">
+        <label class="form-label">DOB</label>
+        <label class="mandatory">*</label>
+        <input
+          type="date"
+          class="form-control"
+          id="dob"
+          formControlName="dob"
+          placeholder="Enter dob"
+          autocomplete="off"
+          [ngClass]="{ error: f.dob?.invalid && f.dob.dirty }"
+        />
+        <label class="form-error" *ngIf="f.dob?.errors?.required && f.dob.dirty"
+          >Enter dob
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="form-row">
+        <label class="form-label">Phone</label>
+        <label class="mandatory">*</label>
+        <input
+          type="text"
+          class="form-control"
+          id="phone"
+          formControlName="phone"
+          placeholder="Enter phone"
+          autocomplete="off"
+          [ngClass]="{ error: f.phone?.invalid && f.phone.dirty }"
+        />
+        <label
+          class="form-error"
+          *ngIf="f.phone?.errors?.required && f.phone.dirty"
+          >Enter phone
+        </label>
+      </div>
+    </div>
+  </div>
+ 
+</form>
+
+<div class="modal-footer px-4 px-lg-5">
+    <div class="row">
+      <div class="col-12 add-admin-button">
+        <button
+          class="btn btn-primary float-start me-2"
+          type="button"
+          [disabled]="userForm.invalid"
+          (click)="addUser()"
+        >
+          Create
+        </button>
+      </div>
+    </div>
+  </div>

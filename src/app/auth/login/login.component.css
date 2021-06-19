@@ -1,0 +1,15 @@
+.login-container {
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ .form-control.error {
+    border-color: #f31414;
+  }
+  label.form-error {
+    color: #e63138;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 400;
+  }
