@@ -1,3 +1,10 @@
+<div class="modal-header px-3 px-md-4">
+  <h5 class="modal-title"> Create User</h5>
+  <button type="button" class="btn-close" aria-hidden="true" (click)="close()" >
+    Close
+  </button>
+</div>
+<div class="modal-body px-3 px-md-4">
 <form [formGroup]="userForm">
   <div class="row">
     <div class="col-12 col-sm-6">
@@ -42,7 +49,7 @@
       </div>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 col-sm-6">
       <div class="form-row">
         <label class="form-label">Last name</label>
         <label class="mandatory">*</label>
@@ -160,43 +167,40 @@
         </label>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <div class="form-row">
-        <label class="form-label">Phone</label>
-        <label class="mandatory">*</label>
-        <input
-          type="text"
-          class="form-control"
-          id="phone"
-          formControlName="phone"
-          placeholder="Enter phone"
-          autocomplete="off"
-          [ngClass]="{ error: f.phone?.invalid && f.phone.dirty }"
-        />
-        <label
-          class="form-error"
-          *ngIf="f.phone?.errors?.required && f.phone.dirty"
-          >Enter phone
-        </label>
-      </div>
+  <div class="col-12 col-sm-6">
+    <div class="form-row">
+      <label class="form-label">Phone</label>
+      <label class="mandatory">*</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+        placeholder="Enter phone"
+        autocomplete="off"
+        [ngClass]="{ error: f.phone?.invalid && f.phone.dirty }"
+      />
+      <label
+        class="form-error"
+        *ngIf="f.phone?.errors?.required && f.phone.dirty"
+        >Enter phone
+      </label>
     </div>
   </div>
- 
+</div>
 </form>
-
-<div class="modal-footer px-4 px-lg-5">
-    <div class="row">
-      <div class="col-12 add-admin-button">
-        <button
-          class="btn btn-primary float-start me-2"
-          type="button"
-          [disabled]="userForm.invalid"
-          (click)="addUser()"
-        >
-          Create
-        </button>
-      </div>
+</div>
+<div class="modal-footer px-3 px-md-4">
+  <div class="row">
+    <div class="col-12 add-admin-button">
+      <button
+        class="btn btn-primary float-start me-2"
+        type="button"
+        [disabled]="userForm.invalid"
+        (click)="addUser()"
+      >
+        Create
+      </button>
     </div>
   </div>
+</div>

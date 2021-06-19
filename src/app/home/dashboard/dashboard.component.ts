@@ -1,5 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/app/shared/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/shared/user.service';
 export class DashboardComponent implements OnInit {
   usersList: any;
   keyParam: any;
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router,private modalService:NgbModal) {
     this.getAllUsers();
   }
 
@@ -33,8 +34,18 @@ export class DashboardComponent implements OnInit {
       console.log('error while getting users', error);
     }
   }
-  createNew() {
-    this.router.navigate(['/home/create']);
+  logout() {
+    localStorage.clear()
+    this.router.navigate(['/login']);
+  } 
+
+  createNew(content: any) {
+    this.modalService.dismissAll();
+    this.modalService.open(content, {
+      size: "xl",
+      scrollable: true,
+      centered: true,
+      windowClass: "modal-holder",
+    });
   }
-  search() {}
 }

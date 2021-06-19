@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
@@ -9,12 +10,12 @@ import { AuthService } from 'src/app/shared/auth.service';
   styleUrls: ['./create-user.component.css'],
 })
 export class CreateUserComponent implements OnInit {
+  @Output() getListFromLocalStorage: EventEmitter<any> = new EventEmitter<any>();
   userForm: FormGroup;
   usersList: any;
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
-    private router: Router
+    private router: Router,private modalService:NgbModal
   ) {
     this.userForm = this.formBuilder.group({
       gender: ['', [Validators.required]],
@@ -49,7 +50,7 @@ export class CreateUserComponent implements OnInit {
         },
         password: this.userForm.value.email,
         phone: this.userForm.value.password,
-        username: this.userForm.value.username,
+        username: this.userForm.value.userName,
       },
     };
     console.log(data);
@@ -58,5 +59,10 @@ export class CreateUserComponent implements OnInit {
   }
   setItem() {
     localStorage.setItem('userList', JSON.stringify(this.usersList));
+    this.modalService.dismissAll()
+    this.getListFromLocalStorage.emit()
+  }
+  close(){
+    this.modalService.dismissAll()
   }
 }

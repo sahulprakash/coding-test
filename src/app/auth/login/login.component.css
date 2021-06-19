@@ -1,8 +1,11 @@
-.login-container {
-  
+.container-fluid {
+  box-shadow:2px 2px 2px rgba(0,0,0,0.16);
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 35px;
+  width: fit-content;
+  margin-top: 15px;
 }
  .form-control.error {
     border-color: #f31414;

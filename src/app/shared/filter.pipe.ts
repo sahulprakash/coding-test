@@ -9,7 +9,9 @@ export class FilterPipe implements PipeTransform {
     if (!args) return value;
 
     let newList = value.filter((el: any) =>
-      el?.user?.name?.first?.toLowerCase().includes(args.toLowerCase())
+     (el?.user?.name?.first?.toLowerCase().includes(args.toLowerCase()) ||
+     el?.user?.name?.last?.toLowerCase().includes(args.toLowerCase()) ||
+     el?.user?.name?.title?.toLowerCase().includes(args.toLowerCase())   )
     );
     return newList ? newList : value;
   }
