@@ -9,8 +9,8 @@ import { UserService } from 'src/app/shared/user.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  usersList: any;
-  keyParam: any;
+  usersList: any= [];
+  keyParam: any='';
   constructor(private userService: UserService, private router: Router,private modalService:NgbModal) {
     this.getAllUsers();
   }
@@ -21,13 +21,13 @@ export class DashboardComponent implements OnInit {
 
   getListFromLocalStorage() {
     let data: any = localStorage.getItem('userList');
-    this.usersList = JSON.parse(data);
+    this.usersList = data?.length ? JSON.parse(data):[];
     console.log(this.usersList);
   }
   async getAllUsers() {
     try {
       const response: any = await this.userService.getUsers();
-      let userList = response.results;
+      let userList = response?.results ? response.results:[];
       localStorage.setItem('userList', JSON.stringify(userList));
       this.getListFromLocalStorage();
     } catch (error) {
