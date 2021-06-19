@@ -7,7 +7,7 @@ import { UserService } from 'src/app/shared/user.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent implements OnInit, OnChanges {
+export class DashboardComponent implements OnInit {
   usersList: any;
   keyParam: any;
   constructor(private userService: UserService, private router: Router) {
@@ -17,9 +17,7 @@ export class DashboardComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     this.getListFromLocalStorage();
   }
-  ngOnChanges() {
-    this.getListFromLocalStorage();
-  }
+
   getListFromLocalStorage() {
     let data: any = localStorage.getItem('userList');
     this.usersList = JSON.parse(data);
@@ -30,6 +28,7 @@ export class DashboardComponent implements OnInit, OnChanges {
       const response: any = await this.userService.getUsers();
       let userList = response.results;
       localStorage.setItem('userList', JSON.stringify(userList));
+      this.getListFromLocalStorage();
     } catch (error) {
       console.log('error while getting users', error);
     }
@@ -37,7 +36,5 @@ export class DashboardComponent implements OnInit, OnChanges {
   createNew() {
     this.router.navigate(['/home/create']);
   }
-  search() {
-    
-  }
+  search() {}
 }
